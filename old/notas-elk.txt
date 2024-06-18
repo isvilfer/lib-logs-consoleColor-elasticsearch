@@ -1,0 +1,10 @@
+http://0.0.0.0:5601/?code=642992 
+
+elastic / H2L*3LYzHrPpoRkNShyG
+
+docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+
+eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjI0LjAuMjo5MjAwIl0sImZnciI6ImUwNThlMmFiNmUwNDJmYjljODNmYzhkZjFjNjA2ZDI0ZTc0MDRiZGIyZTBiMzM5ZmFhZDc1MjgyYjU3OGZmYWEiLCJrZXkiOiJ3dnVkRFpBQjFqbU84OGNQMkhkSzpQZjc2QUFuY1RCS2U3bnRqUXRHMFRBIn0=
+
+docker cp elasticsearch:/usr/share/elasticsearch/config/certs/http_ca.crt .

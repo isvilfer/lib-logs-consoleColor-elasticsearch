@@ -1,0 +1,38 @@
+Estructura recomendada
+
+{
+  "timestamp": "2024-06-09T12:34:56Z",
+  "level": "info",
+  "message": "User logged in",
+  "user": {
+    "id": "12345",
+    "name": "John Doe"
+  },
+  "request": {
+    "method": "GET",
+    "url": "/login",
+    "ip": "192.168.1.1"
+  },
+  "response": {
+    "status": 200,
+    "time": 120
+  },
+  "application": {
+    "name": "my-app",
+    "version": "1.0.0"
+  },
+  "environment": "production"
+}
+
+
+
+// Import the client
+const { Client } = require('@elastic/elasticsearch');
+// Instantiate the client with an API key
+const client = new Client({
+  auth: { apiKey: 'VS0yYl9JOEIzNVZieDdZNFJEX3M6NVFXSWJKbDBRTHUxM21ocnE2MzlSZw==' }
+})
+          
+
+------------------------ LOKI GRAFANA --------------
+https://www.pirobits.com/es/post/grafana-loki-tutorial-aprende-sistema-agregacion-logs

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.13.1",
+    "package.json": "^2.0.1"
+  }
+}
