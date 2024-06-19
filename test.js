@@ -1,10 +1,10 @@
 const LogColorConsoleElasticSearch = require('./src/index');
 const logColorConsoleElasticSearchInstance = new LogColorConsoleElasticSearch();
 
-logColorConsoleElasticSearchInstance.debug('appTest', JSON.stringify({message:'messageTest', duration:102}));
+logColorConsoleElasticSearchInstance.debug('appTest', 'messageTest', {duration:10});
 logColorConsoleElasticSearchInstance.info('appTest', 'messageTest');
 logColorConsoleElasticSearchInstance.warn('appTest', 'messageTest');
-logColorConsoleElasticSearchInstance.error('appTest', 'messageTest');
+logColorConsoleElasticSearchInstance.error('appTest', 'messageTest', {explain:'this is the error'});
 logColorConsoleElasticSearchInstance.critical('appTest', 'messageTest');
 
 
