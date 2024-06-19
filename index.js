@@ -1,4 +1,4 @@
-const console = require('./helpers/console');
+const console = require('./src/helpers/console');
 
 class LogColorConsoleElasticSearch {
 

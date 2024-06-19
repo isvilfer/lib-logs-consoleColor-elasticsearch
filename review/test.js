@@ -1,4 +1,4 @@
-const LogColorConsoleElasticSearch = require('./src/index');
+const LogColorConsoleElasticSearch = require('../index');
 const logColorConsoleElasticSearchInstance = new LogColorConsoleElasticSearch();
 
 logColorConsoleElasticSearchInstance.debug('appTest', 'messageTest', {duration:10});
