@@ -1,4 +1,18 @@
 {
+  "name": "lib-logs-consoleColor-elasticsearch",
+  "version": "1.0.0",
+  "description": "Lgs library show in console with colors and saves in Elasticsearch Server",
+  "main": "src/index.js",
+  "keywords": [
+    "javascript",
+    "logs",
+    "console",
+    "elasticsearch"
+  ],
+  "author": "isvilfer <isvilfer@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+  },
   "dependencies": {
     "@elastic/elasticsearch": "^8.13.1",
     "package.json": "^2.0.1"
