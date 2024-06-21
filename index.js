@@ -1,17 +1,33 @@
-const console = require('./src/helpers/console');
+const consoleColor = require('./src/helpers/console');
+const ElasticsearchLog = require('./src/helpers/elasticsearch');
+
+// Log Levels
+const logLevels = {
+    "DEBUG": 0,
+    "INFO": 1,
+    "WARN": 2,
+    "ERROR": 3,
+    "CRITICAL": 4
+}
 
 class LogColorConsoleElasticSearch {
 
-    constructor () {
+    minimunLogLevelElasticsearch;
+
+    constructor(node, username, password, caFile, index, minimunLogLevelElasticsearch) {
+        this.elasticsearchLog = new ElasticsearchLog(node, username, password, caFile, index);
+        this.minimunLogLevelElasticsearch = minimunLogLevelElasticsearch;
     }
 
-    #getNowTS(){
+    // Gets the Now timestamp in ISO8601 format
+    #getNowTS() {
         const now = new Date();
         const nowISO8601 = now.toISOString();
         return nowISO8601;
     }
 
-    debug(source, message, extraInfo){
+    // Logs a DEBUG event
+    debug(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "DEBUG",
@@ -20,10 +36,14 @@ class LogColorConsoleElasticSearch {
             "extraInfo": extraInfo
         };
 
-        console.consoleDebug(logInformation);
+        consoleColor.consoleDebug(logInformation);
+        if (this.minimunLogLevelElasticsearch == logLevels.DEBUG) {
+            this.elasticsearchLog.logToElasticsearch(logInformation)
+        };
     }
 
-    info(source, message, extraInfo){
+    // Logs a INFO event
+    info(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "INFO",
@@ -32,10 +52,14 @@ class LogColorConsoleElasticSearch {
             "extraInfo": extraInfo
         };
 
-        console.consoleInfo(logInformation);
+        consoleColor.consoleInfo(logInformation);
+        if (this.minimunLogLevelElasticsearch <= logLevels.INFO) {
+            this.elasticsearchLog.logToElasticsearch(logInformation);
+        };
     }
 
-    warn(source, message, extraInfo){
+    // Logs a WARN event
+    warn(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "WARN",
@@ -44,10 +68,14 @@ class LogColorConsoleElasticSearch {
             "extraiInfo": extraInfo
         };
 
-        console.consoleWarn(logInformation);
+        consoleColor.consoleWarn(logInformation);
+        if (this.minimunLogLevelElasticsearch <= logLevels.WARN) {
+            this.elasticsearchLog.logToElasticsearch(logInformation);
+        };
     }
 
-    error(source, message, extraInfo){
+    // Logs a ERROR event
+    error(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "ERROR",
@@ -56,10 +84,14 @@ class LogColorConsoleElasticSearch {
             "extraInfo": extraInfo
         };
 
-        console.consoleError(logInformation);
+        consoleColor.consoleError(logInformation);
+        if (this.minimunLogLevelElasticsearch <= logLevels.ERROR) {
+            this.elasticsearchLog.logToElasticsearch(logInformation);
+        };
     }
 
-    critical(source, message, extraInfo){
+    // Logs a CRITICAL event
+    critical(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "CRITICAL",
@@ -68,8 +100,11 @@ class LogColorConsoleElasticSearch {
             "extraInfo": extraInfo
         };
 
-        console.consoleCritical(logInformation);
+        consoleColor.consoleCritical(logInformation);
+        if (this.minimunLogLevelElasticsearch <= logLevels.CRITICAL) {
+            this.elasticsearchLog.logToElasticsearch(logInformation);
+        };
     }
 }
 
-module.exports = LogColorConsoleElasticSearch;
+module.exports = { logLevels, LogColorConsoleElasticSearch };

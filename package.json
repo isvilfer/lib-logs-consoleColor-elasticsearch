@@ -4,7 +4,9 @@
     "description": "Descripción de tu librería",
     "license": "MIT",
     "main": "index.js",
-    "dependencies": {},
+    "dependencies": {
+        "@elastic/elasticsearch": "^8.14.0"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/isvilfer/lib-logs-consoleColor-elasticsearch.git"
