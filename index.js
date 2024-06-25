@@ -30,7 +30,7 @@ class LogColorConsoleElasticSearch {
     debug(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
-            "level": "DEBUG",
+            "level": "DEBUG...",
             "message": message,
             "source": source,
             "extraInfo": extraInfo
@@ -46,7 +46,7 @@ class LogColorConsoleElasticSearch {
     info(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
-            "level": "INFO",
+            "level": "INFO....",
             "message": message,
             "source": source,
             "extraInfo": extraInfo
@@ -62,7 +62,7 @@ class LogColorConsoleElasticSearch {
     warn(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
-            "level": "WARN",
+            "level": "WARN....",
             "message": message,
             "source": source,
             "extraiInfo": extraInfo
@@ -78,7 +78,7 @@ class LogColorConsoleElasticSearch {
     error(source, message, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
-            "level": "ERROR",
+            "level": "ERROR...",
             "message": message,
             "source": source,
             "extraInfo": extraInfo
