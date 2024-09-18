@@ -13,10 +13,12 @@ const logLevels = {
 class LogColorConsoleElasticSearch {
 
     minimunLogLevelElasticsearch;
+    useElasticSearch;
 
-    constructor(node, username, password, caFile, index, minimunLogLevelElasticsearch) {
+    constructor(node, username, password, caFile, index, minimunLogLevelElasticsearch, useElasticSearch) {
         this.elasticsearchLog = new ElasticsearchLog(node, username, password, caFile, index);
         this.minimunLogLevelElasticsearch = minimunLogLevelElasticsearch;
+        this.useElasticSearch = useElasticSearch;
     }
 
     // Gets the Now timestamp in ISO8601 format
@@ -27,81 +29,91 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a DEBUG event
-    debug(source, message, extraInfo) {
+    debug(source, message, ipAddress, trackID, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "DEBUG...",
             "message": message,
             "source": source,
+            "ipAddress": ipAddress,
+            "trackID": trackID,
             "extraInfo": extraInfo
         };
 
         consoleColor.consoleDebug(logInformation);
-        if (this.minimunLogLevelElasticsearch == logLevels.DEBUG) {
+        if (this.minimunLogLevelElasticsearch == logLevels.DEBUG && this.useElasticSearch) {
             this.elasticsearchLog.logToElasticsearch(logInformation)
         };
     }
 
     // Logs a INFO event
-    info(source, message, extraInfo) {
+    info(source, message, ipAddress, trackID, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "INFO....",
             "message": message,
             "source": source,
+            "ipAddress": ipAddress,
+            "trackID": trackID,
             "extraInfo": extraInfo
         };
 
         consoleColor.consoleInfo(logInformation);
-        if (this.minimunLogLevelElasticsearch <= logLevels.INFO) {
+        if (this.minimunLogLevelElasticsearch <= logLevels.INFO && this.useElasticSearch) {
             this.elasticsearchLog.logToElasticsearch(logInformation);
         };
     }
 
     // Logs a WARN event
-    warn(source, message, extraInfo) {
+    warn(source, message, ipAddress, trackID, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "WARN....",
             "message": message,
             "source": source,
+            "ipAddress": ipAddress,
+            "trackID": trackID,
             "extraiInfo": extraInfo
         };
 
         consoleColor.consoleWarn(logInformation);
-        if (this.minimunLogLevelElasticsearch <= logLevels.WARN) {
+        if (this.minimunLogLevelElasticsearch <= logLevels.WARN && this.useElasticSearch) {
             this.elasticsearchLog.logToElasticsearch(logInformation);
         };
     }
 
     // Logs a ERROR event
-    error(source, message, extraInfo) {
+    error(source, message, ipAddress, trackID, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "ERROR...",
             "message": message,
             "source": source,
+            "ipAddress": ipAddress,
+            "trackID": trackID,
             "extraInfo": extraInfo
         };
 
         consoleColor.consoleError(logInformation);
-        if (this.minimunLogLevelElasticsearch <= logLevels.ERROR) {
+        if (this.minimunLogLevelElasticsearch <= logLevels.ERROR && this.useElasticSearch) {
             this.elasticsearchLog.logToElasticsearch(logInformation);
         };
     }
 
     // Logs a CRITICAL event
-    critical(source, message, extraInfo) {
+    critical(source, message, ipAddress, trackID, extraInfo) {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "CRITICAL",
             "message": message,
             "source": source,
+            "ipAddress": ipAddress,
+            "trackID": trackID,
             "extraInfo": extraInfo
         };
 
         consoleColor.consoleCritical(logInformation);
-        if (this.minimunLogLevelElasticsearch <= logLevels.CRITICAL) {
+        if (this.minimunLogLevelElasticsearch <= logLevels.CRITICAL && this.useElasticSearch) {
             this.elasticsearchLog.logToElasticsearch(logInformation);
         };
     }
