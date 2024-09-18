@@ -1,5 +1,6 @@
 const consoleColor = require('./src/helpers/console');
 const ElasticsearchLog = require('./src/helpers/elasticsearch');
+const axios = require('axios');
 
 // Log Levels
 const logLevels = {
@@ -29,8 +30,14 @@ class LogColorConsoleElasticSearch {
     }
 
     // Gets he user Public IP
-    #getPublicIP(){
-        return "192.168.1.1";
+    #getPublicIP() {
+        axios.get('https://api.ipify.org?format=json')
+            .then(response => {
+                return response.data.ip;
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }
 
     // Logs a DEBUG event
