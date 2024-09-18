@@ -41,7 +41,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a DEBUG event
-    debug(source, message, trackID, extraInfo) {
+    debug(source, message, extraInfo, trackID="noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "DEBUG...",
@@ -59,7 +59,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a INFO event
-    info(source, message, trackID, extraInfo) {
+    info(source, message, extraInfo, trackID="noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "INFO....",
@@ -77,7 +77,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a WARN event
-    warn(source, message, trackID, extraInfo) {
+    warn(source, message, extraInfo, trackID="noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "WARN....",
@@ -95,7 +95,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a ERROR event
-    error(source, message, trackID, extraInfo) {
+    error(source, message, extraInfo, trackID="noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "ERROR...",
@@ -113,7 +113,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a CRITICAL event
-    critical(source, message, trackID, extraInfo) {
+    critical(source, message, extraInfo, trackID="noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "CRITICAL",
