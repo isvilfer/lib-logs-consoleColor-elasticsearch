@@ -1,6 +1,5 @@
 const consoleColor = require('./src/helpers/console');
 const ElasticsearchLog = require('./src/helpers/elasticsearch');
-const axios = require('axios');
 
 // Log Levels
 const logLevels = {
@@ -29,25 +28,14 @@ class LogColorConsoleElasticSearch {
         return nowISO8601;
     }
 
-    // Gets he user Public IP
-    #getPublicIP() {
-        axios.get('https://api.ipify.org?format=json')
-            .then(response => {
-                return response.data.ip;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
     // Logs a DEBUG event
-    debug(source, message, extraInfo, trackID="noTrackID") {
+    debug(source, message, extraInfo, trackID="noTrackID", userIP="noUserIP") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "DEBUG...",
             "message": message,
             "source": source,
-            "ipAddress": this.#getPublicIP(),
+            "ipAddress": userIP,
             "trackID": trackID,
             "extraInfo": extraInfo
         };
@@ -59,13 +47,13 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a INFO event
-    info(source, message, extraInfo, trackID="noTrackID") {
+    info(source, message, extraInfo, trackID="noTrackID", userIP="noUserIP") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "INFO....",
             "message": message,
             "source": source,
-            "ipAddress": this.#getPublicIP(),
+            "ipAddress": userIP,
             "trackID": trackID,
             "extraInfo": extraInfo
         };
@@ -77,13 +65,13 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a WARN event
-    warn(source, message, extraInfo, trackID="noTrackID") {
+    warn(source, message, extraInfo, trackID="noTrackID", userIP="noUserIP") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "WARN....",
             "message": message,
             "source": source,
-            "ipAddress": this.#getPublicIP(),
+            "ipAddress": userIP,
             "trackID": trackID,
             "extraiInfo": extraInfo
         };
@@ -95,13 +83,13 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a ERROR event
-    error(source, message, extraInfo, trackID="noTrackID") {
+    error(source, message, extraInfo, trackID="noTrackID", userIP="noUserIP") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "ERROR...",
             "message": message,
             "source": source,
-            "ipAddress": this.#getPublicIP(),
+            "ipAddress": userIP,
             "trackID": trackID,
             "extraInfo": extraInfo
         };
@@ -113,13 +101,13 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a CRITICAL event
-    critical(source, message, extraInfo, trackID="noTrackID") {
+    critical(source, message, extraInfo, trackID="noTrackID", userIP="noUserIP") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "CRITICAL",
             "message": message,
             "source": source,
-            "ipAddress": this.#getPublicIP(),
+            "ipAddress": userIP,
             "trackID": trackID,
             "extraInfo": extraInfo
         };
