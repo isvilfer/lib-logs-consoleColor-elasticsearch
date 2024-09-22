@@ -31,7 +31,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a DEBUG event
-    debug(source, message, extraInfo, trackID = "noTrackID", userIP = "noUserIP") {
+    debug(source, message, extraInfo, userIP = "noUserIP", trackID = "noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "DEBUG...",
@@ -49,7 +49,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a INFO event
-    info(source, message, extraInfo, trackID = "noTrackID", userIP = "noUserIP") {
+    info(source, message, extraInfo, userIP = "noUserIP", trackID = "noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "INFO....",
@@ -67,7 +67,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a WARN event
-    warn(source, message, extraInfo, trackID = "noTrackID", userIP = "noUserIP") {
+    warn(source, message, extraInfo, userIP = "noUserIP", trackID = "noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "WARN....",
@@ -85,7 +85,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a ERROR event
-    error(source, message, extraInfo, trackID = "noTrackID", userIP = "noUserIP") {
+    error(source, message, extraInfo, userIP = "noUserIP", trackID = "noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "ERROR...",
@@ -103,7 +103,7 @@ class LogColorConsoleElasticSearch {
     }
 
     // Logs a CRITICAL event
-    critical(source, message, extraInfo, trackID = "noTrackID", userIP = "noUserIP") {
+    critical(source, message, extraInfo, userIP = "noUserIP", trackID = "noTrackID") {
         const logInformation = {
             "timestamp": this.#getNowTS(),
             "level": "CRITICAL",
